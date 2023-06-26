@@ -20,7 +20,20 @@ public:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditAnywhere)
-		float XSpeed;
+		float Speed;
+
+	UPROPERTY(EditAnywhere, Meta = (MakeEditWidget = true))
+		FVector TargetLocation;
+
+	void AddActiveTrigger();
+	void RemoveActiveTrigger();
+
+private:
+	FVector GlobalTargetLocation;
+	FVector GlobalStartLocation;
+
+	UPROPERTY(EditAnywhere)
+		int32 ActiveTriggers = 0;
 protected:
 	virtual void Tick(float DeltaTime) override;
 };
